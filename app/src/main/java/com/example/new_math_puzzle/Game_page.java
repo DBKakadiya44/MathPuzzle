@@ -39,15 +39,12 @@ public class Game_page extends AppCompatActivity implements View.OnClickListener
         submit = findViewById(R.id.submit);
 
         skip = findViewById(R.id.skipbutton);
-//        skip.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(cnt<19) {
-//                    cnt++;
-//                    imageView.setImageResource(config.img[cnt]);
-//                }
-//            }
-//        });
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         for(int i=0;i<b.length;i++){
             int id = getResources().getIdentifier("b"+i,"id",getPackageName());
@@ -66,15 +63,12 @@ public class Game_page extends AppCompatActivity implements View.OnClickListener
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("TTT", "onClick: Submit");
                 if(ans.getText().toString().equals(config.ansArr[levelNo]))
                 {
-                    Log.d("TTT", "onClick: true");
                     levelNo++;
-                    Intent intent=new Intent(Game_page.this, Game_page.class);
+                    Intent intent=new Intent(Game_page.this, Winning_page.class);
                     intent.putExtra("levelNo",levelNo);
                     startActivity(intent);
-                    //finish();
                 }
             }
         });
@@ -91,14 +85,11 @@ public class Game_page extends AppCompatActivity implements View.OnClickListener
             e.getLocalizedMessage();
         }
         Collections.sort(imgArr);
-        Log.d("TTT", "befor: All images="+imgArr);
         arrayList=imgArr.subList(3,imgArr.size()-1);
-        Log.d("TTT", "after: All images="+arrayList);
         InputStream inputstream = null;
         try {
             inputstream = getAssets().open("images/"+arrayList.get(levelNo));
             Drawable drawable = Drawable.createFromStream(inputstream, null);
-            //System.out.println("input Stream="+drawable);
             imageView.setImageDrawable(drawable);
             inputstream.close();
         } catch (IOException e) {

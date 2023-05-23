@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.8">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="PUZZLE COMPLETED"
+            android:textColor="@color/purple_700"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold|italic">
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/trophy"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            ></ImageView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.9">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </TextView>
+        <TextView
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:id="@+id/continuebutton"
+            android:layout_margin="7dp"
+            android:background="@drawable/bg_color"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:text="CONTINUE"
+            android:gravity="center"
+            android:textStyle="italic|bold">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:id="@+id/mainmenubutton"
+            android:layout_margin="7dp"
+            android:background="@drawable/bg_color"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:text="MAIN MENU"
+            android:gravity="center"
+            android:textStyle="italic|bold">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:layout_margin="7dp"
+            android:background="@drawable/bg_color"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:text="BUY PRO"
+            android:gravity="center"
+            android:textStyle="italic|bold">
+
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1.1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="SHARE THIS PUZZLE"
+            android:textColor="@color/purple_700"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="20dp"
+            ></TextView>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/shareus">
+
+        </ImageView>
+
+    </LinearLayout>
+
+
+</LinearLayout>
