@@ -9,16 +9,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="0.8">
+        android:layout_weight="0.66">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:id="@+id/winlevel"
+            android:layout_weight="3"
+            android:gravity="center"
             android:text="PUZZLE COMPLETED"
             android:textColor="@color/purple_700"
-            android:gravity="center"
-            android:textSize="20dp"
+            android:textSize="30dp"
             android:textStyle="bold|italic">
 
         </TextView>
@@ -28,7 +29,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/trophy"
             android:layout_gravity="center"
-            android:layout_weight="1"
+            android:layout_weight="0.8"
             ></ImageView>
 
     </LinearLayout>
@@ -54,6 +55,7 @@
             android:layout_margin="7dp"
             android:background="@drawable/bg_color"
             android:layout_weight="1"
+            android:textColor="@color/black"
             android:textSize="20dp"
             android:text="CONTINUE"
             android:gravity="center"
@@ -67,6 +69,7 @@
             android:layout_height="match_parent"
             android:id="@+id/mainmenubutton"
             android:layout_margin="7dp"
+            android:textColor="@color/black"
             android:background="@drawable/bg_color"
             android:layout_weight="1"
             android:textSize="20dp"
@@ -85,6 +88,7 @@
             android:layout_weight="1"
             android:textSize="20dp"
             android:text="BUY PRO"
+            android:textColor="@color/black"
             android:gravity="center"
             android:textStyle="italic|bold">
 

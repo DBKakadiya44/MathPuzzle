@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Winning_page extends AppCompatActivity
 {
-    TextView t1,t2;
-    int levalNo;
+    TextView t1,t2,level;
+    int levelNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,13 +18,14 @@ public class Winning_page extends AppCompatActivity
         setContentView(R.layout.winning_page);
         t1=findViewById(R.id.continuebutton);
         t2 = findViewById(R.id.mainmenubutton);
-        levalNo = getIntent().getIntExtra("levelNo",0);
-
+        level=findViewById(R.id.winlevel);
+        levelNo = getIntent().getIntExtra("levelNo",0);
+        level.setText("PUZZLE "+levelNo+" COMPLETED");
         t1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Winning_page.this,Game_page.class);
-                intent.putExtra("levelNo",levalNo);
+                intent.putExtra("levelNo",levelNo);
                 startActivity(intent);
             }
         });
@@ -33,7 +34,7 @@ public class Winning_page extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Winning_page.this,MainActivity.class);
-                intent.putExtra("levalNo",levalNo);
+                intent.putExtra("levalNo",levelNo);
                 startActivity(intent);
             }
         });

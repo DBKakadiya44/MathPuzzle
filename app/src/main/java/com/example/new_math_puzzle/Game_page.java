@@ -1,12 +1,14 @@
 package com.example.new_math_puzzle;
 
+import static com.example.new_math_puzzle.MainActivity.editor;
+
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,10 +21,10 @@ import java.util.List;
 
 public class Game_page extends AppCompatActivity implements View.OnClickListener {
     ImageView imageView,skip,delet;
-    TextView ans,submit;
+    TextView ans,submit,levelboard;
     TextView[] b=new TextView[10];
     String s="";
-    int a=0,cnt;
+
     int levelNo=0;
     private ArrayList<String> imgArr=new ArrayList<>();
     private List<String> arrayList=new ArrayList<>();
@@ -37,12 +39,17 @@ public class Game_page extends AppCompatActivity implements View.OnClickListener
         ans=findViewById(R.id.ansfield);
         delet = findViewById(R.id.delet);
         submit = findViewById(R.id.submit);
-
+        levelboard=findViewById(R.id.levelboard);
+        levelboard.setText("LEVEL "+(levelNo+1));
         skip = findViewById(R.id.skipbutton);
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(levelNo<19) {
+                    levelNo++;
+                    getImage();
+                    levelboard.setText("LEVEL "+(levelNo+1));
+                }
             }
         });
 
@@ -66,9 +73,14 @@ public class Game_page extends AppCompatActivity implements View.OnClickListener
                 if(ans.getText().toString().equals(config.ansArr[levelNo]))
                 {
                     levelNo++;
+                    editor.putInt("levelNo",levelNo);
+                    editor.putString("levelstatus"+(levelNo-1),"win");
+                    editor.commit();
                     Intent intent=new Intent(Game_page.this, Winning_page.class);
                     intent.putExtra("levelNo",levelNo);
                     startActivity(intent);
+                }else{
+
                 }
             }
         });
