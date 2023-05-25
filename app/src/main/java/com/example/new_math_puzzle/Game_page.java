@@ -49,6 +49,9 @@ public class Game_page extends AppCompatActivity implements View.OnClickListener
                     levelNo++;
                     getImage();
                     levelboard.setText("LEVEL "+(levelNo+1));
+                    editor.putInt("levelNo",levelNo);
+                    editor.putString("levelstatus"+(levelNo),"skip");
+                    editor.commit();
                 }
             }
         });
@@ -74,7 +77,7 @@ public class Game_page extends AppCompatActivity implements View.OnClickListener
                 {
                     levelNo++;
                     editor.putInt("levelNo",levelNo);
-                    editor.putString("levelstatus"+(levelNo-1),"win");
+                    editor.putString("levelstatus"+(levelNo),"win");
                     editor.commit();
                     Intent intent=new Intent(Game_page.this, Winning_page.class);
                     intent.putExtra("levelNo",levelNo);

@@ -33,5 +33,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,Leval_page.class);
+                intent.putExtra("levelNo",levelNo);
+                startActivity(intent);
+            }
+        });
+
     }
 }

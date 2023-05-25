@@ -34,7 +34,7 @@ public class Winning_page extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Winning_page.this,MainActivity.class);
-                intent.putExtra("levalNo",levelNo);
+                intent.putExtra("levelNo",levelNo);
                 startActivity(intent);
             }
         });
