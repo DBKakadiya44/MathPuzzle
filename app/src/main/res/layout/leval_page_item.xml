@@ -28,4 +28,13 @@
         android:textSize="@dimen/_50sdp"
         android:textStyle="bold" />
 
+    <ImageView
+        android:id="@+id/tick"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp" />
+
 </RelativeLayout>

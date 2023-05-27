@@ -2,14 +2,17 @@ package com.example.new_math_puzzle;
 
 import static com.example.new_math_puzzle.MainActivity.editor;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
@@ -46,12 +49,28 @@ public class Game_page extends AppCompatActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 if(levelNo<19) {
-                    levelNo++;
-                    getImage();
-                    levelboard.setText("LEVEL "+(levelNo+1));
-                    editor.putInt("levelNo",levelNo);
-                    editor.putString("levelstatus"+(levelNo),"skip");
-                    editor.commit();
+                    AlertDialog.Builder builder=new AlertDialog.Builder(Game_page.this);
+                    builder.setTitle("Skip");
+                    builder.setMessage("Are you sure you want to skip this level without playing?");
+                    builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            levelNo++;
+                            getImage();
+                            levelboard.setText("LEVEL "+(levelNo+1));
+                            editor.putInt("levelNo",levelNo);
+                            editor.putString("levelstatus"+(levelNo),"skip");
+                            editor.commit();
+                        }
+                    });
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            builder.setCancelable(true);
+                        }
+                    });
+                    builder.show();
+
                 }
             }
         });
@@ -83,7 +102,7 @@ public class Game_page extends AppCompatActivity implements View.OnClickListener
                     intent.putExtra("levelNo",levelNo);
                     startActivity(intent);
                 }else{
-
+                    Toast.makeText(Game_page.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
                 }
             }
         });
