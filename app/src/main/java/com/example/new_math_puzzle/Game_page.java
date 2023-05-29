@@ -1,6 +1,7 @@
 package com.example.new_math_puzzle;
 
 import static com.example.new_math_puzzle.MainActivity.editor;
+import static com.example.new_math_puzzle.MainActivity.preferences;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -94,13 +95,20 @@ public class Game_page extends AppCompatActivity implements View.OnClickListener
             public void onClick(View v) {
                 if(ans.getText().toString().equals(config.ansArr[levelNo]))
                 {
+                    String status = preferences.getString("levelstatus"+(levelNo),"pending");
                     levelNo++;
-                    editor.putInt("levelNo",levelNo);
-                    editor.putString("levelstatus"+(levelNo),"win");
-                    editor.commit();
-                    Intent intent=new Intent(Game_page.this, Winning_page.class);
-                    intent.putExtra("levelNo",levelNo);
-                    startActivity(intent);
+                    if(status.equals("win") || status.equals("skip")){
+                        Intent intent=new Intent(Game_page.this, Winning_page.class);
+                        intent.putExtra("levelNo",levelNo);
+                        startActivity(intent);
+                    }else {
+                        editor.putInt("levelNo", levelNo);
+                        editor.putString("levelstatus" + (levelNo), "win");
+                        editor.commit();
+                        Intent intent = new Intent(Game_page.this, Winning_page.class);
+                        intent.putExtra("levelNo", levelNo);
+                        startActivity(intent);
+                    }
                 }else{
                     Toast.makeText(Game_page.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
                 }
