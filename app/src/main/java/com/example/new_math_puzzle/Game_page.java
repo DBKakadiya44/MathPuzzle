@@ -93,27 +93,36 @@ public class Game_page extends AppCompatActivity implements View.OnClickListener
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ans.getText().toString().equals(config.ansArr[levelNo]))
-                {
-                    String status = preferences.getString("levelstatus"+(levelNo),"pending");
-                    levelNo++;
-                    if(status.equals("win") || status.equals("skip")){
-                        Intent intent=new Intent(Game_page.this, Winning_page.class);
-                        intent.putExtra("levelNo",levelNo);
-                        startActivity(intent);
-                    }else {
+                String info = preferences.getString("info"+levelNo,"play");
+                if(info.equals("play")) {
+                    if (ans.getText().toString().equals(config.ansArr[levelNo])) {
+                        levelNo++;
                         editor.putInt("levelNo", levelNo);
+                        editor.putString("levelstatus" + (levelNo), "win");
+                        editor.putString("info" + levelNo, "played");
+                        editor.commit();
+                        Intent intent = new Intent(Game_page.this, Winning_page.class);
+                        intent.putExtra("levelNo", levelNo);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(Game_page.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                if(info.equals("played")) {
+                    if (ans.getText().toString().equals(config.ansArr[levelNo])) {
+                        levelNo++;
                         editor.putString("levelstatus" + (levelNo), "win");
                         editor.commit();
                         Intent intent = new Intent(Game_page.this, Winning_page.class);
                         intent.putExtra("levelNo", levelNo);
                         startActivity(intent);
+                    } else {
+                        Toast.makeText(Game_page.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
                     }
-                }else{
-                    Toast.makeText(Game_page.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
 
     }
 

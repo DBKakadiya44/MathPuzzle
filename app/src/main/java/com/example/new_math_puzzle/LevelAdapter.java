@@ -73,6 +73,7 @@ public class LevelAdapter extends BaseAdapter {
                     lock.setVisibility(View.INVISIBLE);
                     textView.setText(""+no[position]);
                     tick.setImageResource(R.drawable.tick);
+
                 } else if (status.equals("skip") || levelNo==position) {
                     lock.setVisibility(View.INVISIBLE);
                     textView.setText(""+no[position]);

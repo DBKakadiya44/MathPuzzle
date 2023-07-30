@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static SharedPreferences preferences;
     public static SharedPreferences.Editor editor;
-    int cnt,a,levelNo=0;
+    int cnt,a,levelNo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
